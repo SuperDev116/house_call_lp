@@ -3,13 +3,12 @@
 require_once(__DIR__ . '/../contact/init.php');
 require_once(__DIR__ . '/../contact/validate.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = false;
 
     // 文字コードをセット
-	mb_language("Japanese");
-	mb_internal_encoding("UTF-8");
+    mb_language("Japanese");
+    mb_internal_encoding("UTF-8");
 
     // Collecting form data
     $name = htmlspecialchars($_POST['contact_data']['name']);
@@ -30,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     // $to = "moonrider.crowdworks@gmail.com";
 
     // 送信元
-	$from = FROM_MAIL;
+    $from = FROM_MAIL;
 
     // 件名
     $subject = "ナイトドクター│往診のご依頼・お問い合わせを受信しました";
@@ -38,9 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     // 本文作成
     $body  = "";
     $body .= "---------------------------------------------------------------------\n";
-	$body .= "　往診のご依頼・お問い合わせを受信しました\n";
-	$body .= "---------------------------------------------------------------------\n";
-	$body .= "受信内容は以下のとおりです。\n";
+    $body .= "　往診のご依頼・お問い合わせを受信しました\n";
+    $body .= "---------------------------------------------------------------------\n";
+    $body .= "受信内容は以下のとおりです。\n";
     $body .= "\n";
     $body .= "患者様のお名前：　" . $name . "\n";
     $body .= "患者様の性別：　" . $gender . "\n";
@@ -53,12 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $body .= "備考：　" . $note . "\n";
     $body .= "---------------------------------------------------------------------\n";
     $body .= "\n";
-	$body .= "このメールはナイトドクターのWebサイトから送信されました。\n";
+    $body .= "このメールはナイトドクターのWebサイトから送信されました。\n";
 
-	// 送信処理
-	if (mb_send_mail($to, $subject, $body, "From: " . $from)) {
-		$result = true; // 送信成功
-	}
+    // 送信処理
+    if (mb_send_mail($to, $subject, $body, "From: " . $from)) {
+        $result = true; // 送信成功
+    }
 
     if ($result) {
         $message = "メールを送信しました。";
@@ -139,71 +138,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         }
     }
 
-    select.lang {
-        width: 120px;
-        padding: 8px;
-        font-size: 14px;
-        color: #333;
-        background: #f8f9fa;
-        border: 2px solid #2b80d1;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-        transition: all 0.3s ease-in-out;
-    }
-
-    /* When hovering */
-    select.lang:hover {
-        background: #e3f2fd;
-    }
-
-    /* When focused */
-    select.lang:focus {
-        border-color: #1e5ea6;
-        box-shadow: 0 0 5px rgba(43, 128, 209, 0.5);
-    }
-
-    /* Style dropdown arrow */
-    select.lang::-ms-expand {
-        display: none;
-        /* Hide default arrow in IE */
-    }
-
-    select.lang {
-        appearance: none;
-        /* Remove default styling */
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="%232b80d1"><path d="M7 10l5 5 5-5z"/></svg>');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 16px;
-        padding-right: 30px;
-    }
-
-    /* Mobile-friendly adjustments */
-    @media (max-width: 600px) {
-        select.lang {
-            width: 120px;
-            font-size: 16px;
-        }
-    }
-
     /* 言語選択 */
     .flagdropdown {
         position: relative;
+        bottom: 5px;
         display: inline-block;
-        width: 150px;
+        width: 200px;
+        font-size: 2.5rem;
+        font-weight: bold;
     }
+
     .flagdropdown-toggle {
         background: white;
-        border: 1px solid #ccc;
+        border: 2px solid red;
         padding: 10px;
         cursor: pointer;
         display: flex;
         align-items: center;
         gap: 10px;
     }
+
     .flagdropdown-menu {
         display: none;
         position: absolute;
@@ -213,8 +167,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         list-style: none;
         padding: 0;
         margin: 0;
-        width: 150px;
+        width: 200px;
     }
+
     .flagdropdown-menu li {
         padding: 10px;
         display: flex;
@@ -222,14 +177,138 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         gap: 5px;
         cursor: pointer;
     }
+
     .flagdropdown-menu li:hover {
         background: #f0f0f0;
     }
+
     .flag {
-        width: 20px;
-        height: 14px;
+        width: 30px;
+        height: 21px;
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    #header {
+        height: 75px !important;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        /* Bottom shadow */
+    }
+
+
+    @media (max-width: 640px) {
+
+        /* 言語選択 */
+        .flagdropdown {
+            width: 150px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .flagdropdown-menu {
+            width: 150px;
+        }
+
+        .flag {
+            width: 20px;
+            height: 14px;
+        }
+
+        #header {
+            height: 50px !important;
+        }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 60%;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .content-wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .flag-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .flag-list li {
+        list-style: none;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .flag-list img {
+        width: 50px;
+        height: 35px;
+    }
+    
+    @media (max-width: 640px) {
+
+        /* 言語選択 */
+        .modal-content {
+            width: 90%;
+        }
+
+        .flag-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+
+        .flag-list li {
+            padding: 0px;
+            cursor: pointer;
+        }
+
+        .flag-list img {
+            width: 50px;
+            height: 35px;
+            border: 1px solid #ccc;
+        }
+
+        .content-wrap {
+            display: block;
+            align-items: center;
+        }
+
+        .sp_hidden {
+            display: none;
+        }
     }
 </style>
 
@@ -264,7 +343,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <!-- End Google Tag Manager (noscript) -->
 
     <header id="header">
-        
+
+        <div id="languageModal" class="modal">
+            <div class="modal-content">
+                <div class="content-wrap">
+                    <figure class="main_ccp" style="padding: 10px;">
+                        <picture>
+                            <source srcset="../images/main_catch_pc.png" media="(min-width: 801px)">
+                            <img src="../images/main_catch_smp.png" alt="夜間と休日に医師が自宅へ訪問する救急往診サービスです。2020年度 夜間休日往診実績34000件以上">
+                        </picture>
+                    </figure>
+                    <ul class="flag-list">
+                        <li onclick="selectLanguage_('en', 'https://flagcdn.com/w40/us.png', 'English')">
+                            <img class="flag" src="https://flagcdn.com/w40/us.png" alt="US"> <span class="sp_hidden">English</span>
+                        </li>
+                        <li onclick="selectLanguage_('zh', 'https://flagcdn.com/w40/cn.png', '中文')">
+                            <img class="flag" src="https://flagcdn.com/w40/cn.png" alt="CN"> <span class="sp_hidden">中文</span>
+                        </li>
+                        <li onclick="selectLanguage_('kr', 'https://flagcdn.com/w40/kr.png', '한국어')">
+                            <img class="flag" src="https://flagcdn.com/w40/kr.png" alt="KR"> <span class="sp_hidden">한국어</span>
+                        </li>
+                        <li onclick="selectLanguage_('my', 'https://flagcdn.com/w40/my.png', 'Bahasa')">
+                            <img class="flag" src="https://flagcdn.com/w40/my.png" alt="MY"> <span class="sp_hidden">Bahasa</span>
+                        </li>
+                        <li onclick="selectLanguage_('jp', 'https://flagcdn.com/w40/jp.png', '日本語')">
+                            <img class="flag" src="https://flagcdn.com/w40/jp.png" alt="JP"> <span class="sp_hidden">日本語</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="innerWrap flex_wrap between">
 
             <h1 class="top_logo">
@@ -273,13 +382,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 </a>
             </h1>
 
-            <!-- <select class="lang" onchange="changeLang(event);">
-                <option value="jp">🇯🇵 日本語</option>
-                <option value="en">🇺🇸 English</option>
-                <option value="zh">🇨🇳 中文</option>
-                <option value="kr">🇰🇷 한국어</option>
-                <option value="my">🇲🇾 Bahasa</option>
-            </select> -->
             <div class="flagdropdown">
                 <div class="flagdropdown-toggle" onclick="toggleDropdown()">
                     <img id="selected-flag" class="flag" src="https://flagcdn.com/w40/us.png" alt="US">
@@ -1139,6 +1241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         function toggleDropdown() {
             document.getElementById("flagdropdown-menu").style.display = "block";
         }
+
         function selectLanguage(lang, flagSrc, text) {
             document.getElementById("selected-flag").src = flagSrc;
             document.getElementById("selected-text").innerText = text;
@@ -1150,22 +1253,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             $("#contact ." + lang).show();
             $("#fst_view ." + lang).css("display", "flex");
             $("#faq ." + lang).show();
+
+            document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
         }
+
         document.addEventListener("click", function(event) {
             if (!event.target.closest(".flagdropdown")) {
                 document.getElementById("flagdropdown-menu").style.display = "none";
             }
         });
 
-        // function changeLang(e) {
-        //     $("#contact .innerWrap").hide();
-        //     $("#fst_view .intro").hide();
-        //     $("#faq .accordion").hide();
-        //     var lang = e.target.value;
-        //     $("#contact ." + lang).show();
-        //     $("#fst_view ." + lang).css("display", "flex");
-        //     $("#faq ." + lang).show();
-        // }
+        function openModal() {
+            document.getElementById("languageModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("languageModal").style.display = "none";
+        }
+
+        function selectLanguage_(lang, flagUrl, language) {
+            document.getElementById("selected-flag").src = flagUrl;
+            document.getElementById("selected-text").innerText = language;
+
+            $("#contact .innerWrap").hide();
+            $("#fst_view .intro").hide();
+            $("#faq .accordion").hide();
+            $("#contact ." + lang).show();
+            $("#fst_view ." + lang).css("display", "flex");
+            $("#faq ." + lang).show();
+
+            document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+
+            closeModal();
+        }
+
+        $(document).ready(function() {
+            openModal();
+        });
     </script>
 </body>
 
