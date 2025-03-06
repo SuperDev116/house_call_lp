@@ -1,0 +1,686 @@
+/* SMARTPHONES SIZE */
+@media screen and (max-width: 799px) {
+
+body {
+	font-size: 14px;
+	font-size: 1.4rem;
+	line-height: 1.58;
+}
+
+/*  ブレイク表示・非表示  */
+.pc_hidden {
+	display: block;
+}
+
+.mobile_hidden {
+	display: none;
+}
+
+h2.sec_top {
+    font-size: 1.6rem;
+	letter-spacing: 0.112em;
+}
+
+.rou_ttl {
+	width: 95%;
+    margin-bottom: 1em;
+    padding: 0.6em 1.2em;
+}	
+
+.add_arw {
+	background-size: 24px auto;
+	padding-right: 30px;
+}	
+
+
+/***********************/
+#header {
+	height: 39px;
+}
+
+#header > .innerWrap,
+.innerWrap,
+.action {
+	width: 100%;
+}
+
+.innerWrap {
+	padding: 0;
+}
+
+#header > .innerWrap {
+	padding: 6px 12px;
+}
+
+#header h1.top_logo figure {
+	width: 120px;
+}
+
+#header nav {
+    font-size: 1.1rem;
+	margin-right: 10px;
+}
+
+#header nav li {
+    border-right-width: 1px;
+    padding: 0 0.78em;
+}
+
+
+
+
+
+
+
+
+/***********************/
+#fst_view {
+	padding: 40px 0 0;
+	background-image: url(../images/fv_back_smp.jpg) ;
+}
+
+.main_ccp {
+	padding: 50px 20px;
+}
+
+.exp_txt {
+	width: 100%;
+	font-size: 1.6rem;
+	padding: 0.333em;
+	background: #56b9e3;
+	left: 0;
+}
+
+.exp_txt:before {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+/***********************/
+#bnr .innerWrap {
+	padding: 0;
+}
+
+#bnr ul {
+	margin: 0;
+}
+
+#bnr ul li {
+	margin: 0;
+}
+
+
+
+
+/***********************/
+.iframe-wrapper {
+	min-width: 100%;
+}	
+
+.v_logo {
+	width: 33vw;
+	margin-top: 25px;
+}	
+
+#movie .innerWrap > p {
+	padding: 0 12px 25px;
+	margin-bottom: 0;
+	text-align: left;
+}
+
+
+
+
+
+
+/***********************/
+#media .innerWrap {
+    padding: 0 12px 25px;
+}
+
+.line_ttl {
+	font-size: 1.7rem;
+}
+
+#tv,
+.flex_wrap.pcr,
+.flex_wrap.action,
+#point ul,
+.flex_wrap.areamap,
+.flex_wrap.targeter,
+#con_act {
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	flex-direction: column;
+}
+
+#tv {
+	margin-bottom: 0;
+}
+
+#tv dl {
+    width: 100%;
+	padding: 0 12px 25px;
+}
+
+.media_logo_wrap {
+	padding: 0 12px;
+}
+
+
+
+
+
+
+
+/***********************/
+#comparison {
+	padding: 25px 0;
+}
+	
+#comparison p {
+	padding: 0 24px;
+	text-align: left;
+}
+	
+
+
+
+/***********************/
+#virus .innerWrap {
+    padding: 25px 12px 0;
+}
+
+.lined_wrap {
+    border-width: 2px;
+    padding: 1em;
+}
+
+.f_left {
+	min-width: 50%;
+	margin: 0;
+}
+
+
+
+
+
+	
+
+
+
+
+/***********************/
+.action {
+	width:85%;
+	padding: 20px 0 40px;
+}
+
+.phone_img {
+    display: none;
+}
+
+.poke_doc {
+    width: 100%;
+}
+
+.poke_doc figure img {
+    margin-left: 0;
+	max-width: 66%;
+}
+
+.poke_doc h3.line_ttl {
+    margin: 0;
+}
+
+.poke_doc p {
+    margin-left: 0;
+	padding: 0 20px;
+}
+
+.poke_doc .rou_ttl {
+	width: 100%;
+    font-size: 1.5rem;
+    margin: 0 auto !important;
+}
+
+
+
+
+
+
+
+/***********************/
+#point .innerWrap {
+    padding: 0 12px 24px;
+}
+
+.crnr_ttl {
+    margin-bottom: 10px;
+}
+
+#point ul li {
+    width: 100%;
+    margin-bottom: 10px;
+    border-width: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/***********************/
+#feature .innerWrap {
+    padding: 25px 12px;
+}
+
+#feature .rou_ttl {
+    border-width: 2px;
+	width: 100%;
+    margin-bottom: 20px;
+}
+
+.white_box {
+	padding: 12px;
+}
+
+#ftr_box li {
+	width: calc((100% - 10px) / 2);
+	margin: 0 0 20px;
+}	
+
+#ftr_box li figure {
+	width: 60%;
+}	
+
+#ftr_box li h3 {
+	font-size: 1.54rem;
+}	
+
+#ftr_box li p {
+	font-size: 1.24rem;
+	padding: 0;
+}	
+
+.sq_ttl {
+	display: inline-block;
+	border-width: 2px;
+	margin: 0 auto 10px;
+}
+
+#symptoms li {
+	width: calc((100% - 10px) / 2);
+	margin: 0 2px 5px;
+    font-size: 1.2rem;
+	padding: 0;
+	min-height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************/
+#area .innerWrap {
+    padding: 25px 12px;
+}
+
+#area .innerWrap h2 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.map_box {
+    padding: 10px;
+	margin-bottom: 10px;
+}
+
+#area .innerWrap > h3 {
+    margin: 10px auto 0;
+}
+
+.teleapo {
+    border: none;
+}
+
+.teleapo td {
+	display: block;
+	width: 100%;
+    padding: 10px;
+	margin-top: 1px;
+    border: 1px solid #56b9e3;
+}
+
+.teleapo a {
+	padding: 0 0 0 50px;
+	background-size: 42px auto;
+}
+
+.teleapo strong {
+	font-size: 1.4rem;
+}
+
+.telNum {
+	font-size: 3rem;
+	font-weight: 600;
+}
+
+
+.targeter > li {
+	margin: 20px 0;
+}
+
+.targeter h3 {
+	margin-top: 12px;
+}
+
+#con_act > li {
+	width: 100%;
+	margin: 0 auto 5px;
+}
+
+#con_act a {
+	display: inline-block;
+	width: 240px !important;
+	
+	min-height: 48px;
+	line-height: 48px;
+	
+	padding: 0 42px;
+	padding-left: 70px;
+	
+	background-position: 24px center ;
+	
+}
+
+.online,
+.onmail {
+	background-size: 40px 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************/
+#contact .innerWrap {
+    padding: 0 12px 25px;
+}
+
+#contact strong {
+    font-size: 1.09em;
+}
+
+#contact h2 {
+    margin: 25px auto;
+    font-weight: normal;
+}
+
+#contact h2 > span {
+    font-size: 1.3em;
+}
+
+.cform_wrap {
+    width: 100%;
+    margin:  10px auto 0;
+}
+
+.form_table td {
+	display: block;
+	width: 100%;
+	padding: 0.4em;
+}
+
+.input_ttl {
+	font-weight: 500;
+}
+
+.wtsl {
+    width: 90% !important;
+}
+
+.wts {
+    margin-top:  2px;
+}
+
+.btn {
+    width: 65%;
+    font-size: 1.09em;
+}
+
+
+
+
+
+
+
+
+
+
+
+/***********************/
+#footer {
+    font-size: 1.1rem;
+    padding: 25px 12px calc(100vw / 3);
+}
+
+#footer .ft_logo figure {
+	width: 90px;
+}
+
+#footer .rou_ttl {
+    border-width: 2px;
+    margin: 10px auto;
+    font-size: 1.5rem;
+}
+
+.corp_info {
+    margin: 10px auto;
+}
+
+#goto_top {
+    bottom: calc((100vw / 3) - 19px);
+    right: 0;
+}
+
+#goto_top a {
+	width: 38px;
+	overflow: hidden;
+	padding: 5px;
+}
+
+.ft_links {
+    margin: 10px auto;
+    font-size: 0.9rem;
+}
+
+.cpright {
+    font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************************************
+
+HUMBURGER
+
+*****************************************************************/
+.humb {
+    width: 24px;
+    height: 20px;
+}
+
+.humb span:nth-of-type(2) {
+	margin-top: -1px;
+}
+
+.humb.opened span:nth-of-type(1) {
+    transform: translateY(9px) rotate(-45deg);
+}
+
+.humb.opened span:nth-of-type(3){
+    transform: translateY(-9px) rotate(45deg);
+}
+
+
+
+
+/***************************************************************
+
+CTA
+
+*****************************************************************/
+#cta {
+	display: block !important;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	background: rgba(0,0,0,0); 
+	top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#cta .flex_wrap {
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	flex-direction: row;
+}
+
+#cta .flex_wrap > li a {
+	padding: 0 0 6px;
+}
+
+.smp_txt {
+	display: block;
+	font-size: 11px;
+	line-height: 1;
+	font-weight: 600;
+	color: #fff;
+	text-align: center;
+}
+
+#cta img {
+	width: 64%;
+	height: auto;
+	opacity: 1 !important;
+}
+
+
+
+/***************************************************************
+
+MODALMENU
+
+*****************************************************************/
+#modalmenu {
+	width: 100vw;
+	border-left: none;
+	top: 39px;
+	right: -100vw;
+}
+
+#modalmenu ul {
+	padding: 25px 14px;
+}
+
+#modalmenu ul > li {
+	font-size: 1.3rem;
+}
+
+
+
+
+
+/***************************************************************
+
+PAGED
+
+*****************************************************************/
+section.low_page {
+	padding: 40px 0 0;
+}
+
+section.low_page p {
+	padding: 1em;
+}
+
+ul.examin {
+	width: 100%;
+	padding: 0 30px;
+}
+
+ul.examin > li {
+	list-style-type: disc;
+	margin: 0.75em 0;
+}
+
+.img_flow {
+	width: 100%;
+	padding: 0 30px;
+}
+
+
+
+/***************************************************************
+
+ADD_NEWS
+
+*****************************************************************/
+#news ul.news_list > li {
+	display: block;
+}
+
+#news ul.news_list > li time {
+	display: block;
+	margin-right: 0;
+}
+
+#news ul.mov_list {
+	display: block;
+}
+
+#news ul.mov_list > li {
+	width: 100%;
+	padding: 1em;
+}
+}

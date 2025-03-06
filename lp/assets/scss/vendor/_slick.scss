@@ -1,0 +1,181 @@
+.slick-slider {
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
+  .slick-track, .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  &:before,
+  &:after {
+    display: table;
+    content: '';
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  img {
+    width: 100%;
+  }
+  &.slick-current img {
+  }
+  &.slick-loading img {
+    display: none;
+  }
+  &.dragging img {
+    pointer-events: none;
+  }
+  .slick-initialized & {
+    display: block;
+  }
+  .slick-loading & {
+    visibility: hidden;
+  }
+  .slick-vertical & {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+  @include screen-sm {
+
+  }
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 1.6rem;
+  z-index: 999;
+  display: block;
+  width: 100%;
+  text-align: center;
+  li {
+    display: inline-block;
+    margin: 0 .2rem;
+    cursor: pointer;
+    button {
+      position: relative;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      outline: none;
+      width: 20px;
+      height: 20px;
+      color: transparent;
+      cursor: pointer;
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+         @include faIcon("f111");
+        font-size: 16px;
+        line-height: 1;
+        color: #fff;
+      }
+      &:hover {
+        &:before {
+          color: $mainC;
+        }
+      }
+    }
+    &.slick-active {
+      color: #fff;
+      button {
+        &:before {
+          color: $mainC;
+        }
+      }
+    }
+  }
+  @include screen-sm {
+    bottom: .4rem;
+    li {
+      button {
+        width: 12px;
+        height: 12px;
+        &:before {
+          font-size: 10px;
+        }
+      }
+    } 
+  }
+}
+
+/* Arrows */
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 9;
+  margin-top: -1.2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(#fff, .6) no-repeat center;
+  outline: none;
+  cursor: pointer;
+  &.slick-hidden {
+    display: none;
+  }
+  &.prev {
+    left: 2.4rem;
+    background-image: url(../img/prev.png);
+  }
+  &.next {
+    right: 2.4rem;
+    background-image: url(../img/next.png);
+  }
+  &:focus {
+    outline: none !important;
+  }
+  &:hover, &:focus {
+    background-color: rgba(#fff, 1);
+  }
+  &.slick-disabled:before {
+    opacity: 0.25;
+  }
+  @include screen-sm {
+    width: 32px;
+    height: 32px;
+    background-size: 24px;
+    &.prev {
+      padding: 0;
+      left: .2rem;
+    }
+    &.next {
+      padding: 0;
+      right: .2rem;
+    }
+  }
+}

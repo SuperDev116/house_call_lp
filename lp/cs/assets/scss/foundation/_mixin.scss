@@ -1,0 +1,123 @@
+@mixin faIcon($unicode) {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-weight: 900;
+  content: unquote("\"") + unquote(str-insert($unicode, "\\", 1)) + unquote("\"");
+}
+
+@mixin faIconBefore($unicode) {
+  &:before {
+    margin-right: .6rem;
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 900;
+    content: unquote("\"") + unquote(str-insert($unicode, "\\", 1)) + unquote("\"");
+   }
+}
+@mixin faIconAfter($unicode) {
+  &:after {
+    margin-left: .6rem;
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 900;
+    content: unquote("\"") + unquote(str-insert($unicode, "\\", 1)) + unquote("\"");
+   }
+}
+
+@mixin btn ($bg: $mainC, $border: $mainC, $color: #fff) {
+  display: block;
+  margin: 1.6rem auto;
+  padding: .8rem;
+  width: 320px;
+  max-width: 100%;
+  transition: .6s;
+  background: $bg;
+  border: solid 2px $border;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: $color;
+  text-align: center;
+  cursor: pointer;
+  &:hover, &:active, &:focus {
+    background: none;
+    color: $border;
+  }
+}
+@mixin btn-skelton ($bg: #fff, $border: #fff, $color: #fff, $hover: $mainC) {
+  background: none;
+  border: solid 2px $border;
+  color: $color;
+  &:hover, &:active, &:focus {
+    background: $bg;
+    color: $hover;
+  }
+}
+
+
+@mixin underLine($baseColor: $subC) {
+  display: inline-block;
+  padding: 0 .4rem;
+  background: linear-gradient(transparent 60%, $baseColor 60%);
+  letter-spacing: 2px;
+  @media (max-width: 767px) {
+    display: inline;
+  }
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin layerBg {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  content: "";
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+@mixin bgDot($baseColor: $mainC) {
+  background-color: rgba($baseColor, .1);
+  background-size: 8px 8px;
+  background-image: radial-gradient(rgba(#fff, 1),rgba(#fff, 1) 4px,transparent 0px,transparent);
+}
+@mixin bgStripe($baseColor: #e7eefc) {
+  background: linear-gradient(45deg, $baseColor 25%, transparent 25%,transparent 50%, $baseColor 50%, $baseColor 75%,transparent 75%, transparent) center / 8px 8px;
+}
+@mixin mincho {
+  font-family: "Sawarabi Mincho", "游明朝", 'YuMincho', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}
+@mixin gothic {
+  font-family: 'Noto Sans Japanese', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+@mixin coverBg {
+  background-size: cover;
+  background-position: center center;
+}
+
+
+@mixin screen-lg {
+  @media screen and (max-width: $lg-max) {
+    @content;
+  }
+}
+@mixin screen-md {
+  @media screen and (max-width: $md-max) {
+    @content;
+  }
+}
+@mixin screen-sm {
+  @media screen and (max-width: $sm-max) {
+    @content;
+  }
+}
+@mixin screen-xs {
+  @media screen and (max-width: $xs-max) {
+    @content;
+  }
+}

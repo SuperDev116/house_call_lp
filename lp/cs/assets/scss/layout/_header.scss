@@ -1,0 +1,42 @@
+#header {
+  position: relative;
+}
+.language-switch-list {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  z-index: 9;
+  display: flex;
+  border: 1px solid $mainC;
+  li {
+    a {
+      display: block;
+      padding: 2px 12px;
+      background: $mainC;
+      font-size: .9rem;
+      color: #fff;
+      text-align: center;
+      &.current {
+        pointer-events: none;
+        background: #fff;
+        color: $mainC;
+      }
+      &:hover {
+        background: #fff;
+        color: $mainC;
+      }
+    }
+    &:not(:first-child) {
+      border-left: 1px solid #fff;
+    }
+  }
+  @include screen-sm {
+    top: 8px;
+    right: 8px;
+    li {
+      a {
+        padding: 2px 12px;
+      }
+    }
+  }
+}

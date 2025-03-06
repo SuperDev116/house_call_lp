@@ -1,0 +1,118 @@
+.page-section {
+  padding: 3.6rem 0;
+  .container {
+    & > h3 {
+      padding-bottom: .8rem;
+      border-bottom: 2px dotted $gray;
+      font-size: 1.2rem;
+      text-align: left;
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+#online {
+  .row {
+    justify-content: center;
+  }
+  .app-dl {
+    padding: .8rem;
+    @include bgDot;
+    dt {
+      font-size: 1.2rem;
+      color: $mainC;
+      text-align: center;
+    }
+    dd {
+      @include flexCenter;
+    }
+  }
+  .qrcode {
+    width: 140px;
+  }
+  .store {
+    width: 200px;
+  }
+  .caution {
+    padding: .8rem;
+    border: 2px dotted #910e0e;
+    font-size: .9rem;
+    color: #910e0e
+  }
+  .flow-list {
+    margin: 0 auto;
+    li {
+      h3 {
+        display: flex;
+        align-items: center;
+        color: $mainC;
+        span {
+          @include flexCenter;
+          margin-right: .6rem;
+          min-width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: $mainC;
+          font-size: 1.6rem;
+          color: #fff;
+        }
+      }
+      &:not(:last-child):after {
+        display: block;
+        @include faIcon("f0d7");
+        margin: 0;
+        font-size: 3.2rem;
+        line-height: 1;
+        color: $mainC;
+        text-align: center;
+      }
+      .pic {
+        padding: .8rem;
+        background: #e8f2f9;
+        text-align: center;
+      }
+    }
+  }
+  .btn {
+    width: 480px;
+  }
+}
+
+
+.law-dl {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $gray;
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
+  dt {
+    width: 30%;
+    padding: 1.2rem;
+    background: #e8f2f9;
+    border-top: 1px solid $gray;
+  }
+  dd {
+    width: 70%;
+    margin-bottom: 0;
+    padding: 1.2rem;
+    background: #fff;
+    border-top: 1px solid $gray;
+    overflow: hidden;
+  }
+  @include screen-sm {
+    border-bottom: 1px solid $gray;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+    dt {
+      width: 100%;
+      padding: .8rem 1.6rem;
+    }
+    dd {
+      width: 100%;
+      padding: .8rem 1.6rem;
+      border-top: none;
+    }
+  }
+}

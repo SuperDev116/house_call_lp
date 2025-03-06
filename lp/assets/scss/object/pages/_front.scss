@@ -1,0 +1,999 @@
+#mv {
+  background: url(../img/mv_bg.jpg) center / cover;
+  .container {
+    @include flexCenter;
+    flex-direction: column;
+    height: 640px;  
+  }
+  .mv-content {
+    padding: 2.4rem 1.2rem;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    background-color: rgba(#fff,.6);
+    text-align: center;
+    .catch {
+      margin-bottom: 0;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+    h1 {
+      padding: 1.2rem 0;
+      margin: 1.2rem 0;
+      border-top: 3px solid $mainC;
+      border-bottom: 3px solid $mainC;
+      font-weight: bold;
+      font-size: 2.6rem;
+      letter-spacing: 2px;
+      i {
+        color: $subC;
+      }
+      span {
+        font-size: 2rem;
+        letter-spacing: -2px;
+      }
+    }
+    h2 {
+      margin-bottom: 1.6rem;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    .reception {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 auto .4rem;
+      max-width: 320px;
+      letter-spacing: .1em;
+      text-align: left;
+      dt {
+        margin: 0;
+        width: 160px;
+        h3 {
+          margin: 0;
+          padding: .4rem;
+          border-radius :24px;
+          background: $subC;
+          font-weight: 700;
+          font-size: 1.2rem;
+          color: #fff;
+          text-align: center;
+        }
+      }
+      dd {
+        width: 160px;
+        margin: 0;
+        padding-left: .4rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+      &.pcr {
+        dt {
+          h3 {
+            background: $mainC;
+          }
+        }
+      }
+    }
+  }
+  @include screen-sm {
+    .container {
+      height: 560px;  
+    }
+    .mv-content {
+      padding: 1.2rem;
+      .catch {
+        font-size: 1rem;
+        letter-spacing: 2px;
+      }
+      h1 {
+        padding: .8rem 0;
+        margin: .8rem 0;
+        font-size: 2rem;
+        line-height: 1.2;
+        span {
+          font-size: 1.6rem;
+        }
+      }
+      h2 {
+        margin-bottom: .8rem;
+        font-size: 1.2rem;
+      }
+      .reception {
+        font-size: .85rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+#intro {
+  position: relative;
+  padding: 1.2rem 0;
+  background: $mainC;
+  text-align: center;
+  p {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+    strong {
+      font-weight: 700;
+    }
+  }
+  &:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -32px;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    margin: 0 auto;
+    z-index: 9;
+    border-top-color: $mainC;
+    border-width: 16px;
+    content: " ";
+  }
+  @include screen-sm {
+    padding: .8rem 0;
+    p {
+      font-size: 1rem;
+    }
+    &:after {
+      bottom: -30px;
+    }
+  }
+}
+
+#video {
+  .iframe-wrapper {
+    margin-bottom: 2.4rem;
+  }
+  .pic {
+    max-width: 340px;
+    margin: 0 auto 1.2rem;
+  }
+  p {
+    margin: 1.2rem auto;
+    text-align: left;
+  }
+}
+
+.section {
+  padding: 3.2rem 0;
+  .container {
+    & > h2 {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 3.2rem;
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: $mainC;
+      text-align: center;
+      &:before, &:after {
+        display: block;
+        flex-grow: 1;
+        height: 1px;
+        background: $mainC;
+        content: "";
+      }
+      &:before {
+        margin-right: 1.6rem;
+      }
+      &:after {
+        margin-left: 1.6rem;
+      }
+    }
+    & > h3 {
+      padding-top: 1.2rem;
+      font-weight: 700;
+      font-size: 1.6rem;
+      text-align: center;
+      &:after {
+        display: block;
+        margin: 1.6rem auto;
+        width: 160px;
+        height: 8px;
+        background: $mainC;
+        content: "";
+      }
+    }
+    .lead {
+      margin-bottom: 2.4rem;
+      font-size: 1rem;
+    }
+  }
+  @include screen-sm {
+    padding: 2.4rem 0;
+    .container {
+      & > h2 {
+        margin-bottom: 2.4rem;
+        font-size: 1.4rem;
+        &:before {
+          margin-right: 1rem;
+        }
+        &:after {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+}
+
+#corona {
+  padding-bottom: 4.8rem;
+  h2 {
+    margin-bottom: 1.6rem;
+    &:not(:first-of-type) {
+      margin-top: 3.2rem;
+    }
+  }
+  .lead {
+    margin-bottom: 1.6rem;
+    font-size: 1.2rem;
+  }
+  ul {
+    margin-bottom: 1.2rem;
+    li {
+      display: flex;
+      padding: .4rem;
+      border-bottom: 1px dotted $gray;
+      font-size: 1.1rem;
+      &:before {
+        margin-right: .4rem;
+        @include faIcon(f00c);
+        color: $mainC
+      }
+    }
+  }
+  .corona-message {
+    text-align: center;
+    p {
+      font-size: 1.1rem;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  .pcr-compare {
+    margin-top: 2.4rem;
+    padding: 2.4rem 1.6rem;
+    background: #f5f5f5;
+    text-align: center;
+    h3 {
+      display: inline-block;
+      margin-bottom: 1.2rem;
+      padding: .6rem 2.4rem;
+      border-radius: 24px;
+      background: $mainC;
+      font-size: 1.4rem;
+      color: #fff;
+      text-align: center;
+    }
+    strong {
+      color: $mainC;
+    }
+    .pcr-table {
+      margin: 0 auto;
+      width: 100%;
+      background: #fff;
+      .pickup {
+        display: block;
+        font-size: .85rem;
+        color: $subC;
+      }
+      .sub {
+        font-size: .8rem;
+      }
+      th, td {
+        padding: 1.6rem .8rem;
+        border: 1px solid $gray;
+      }
+      th {
+        width: 25%;
+        background: $mainC;
+        color: #fff;
+        text-align: center;
+      }
+      thead {
+        background: $mainC;
+        vertical-align: bottom;
+        th {
+          background: $mainC;
+          &:nth-child(2) {
+            background: rgba(#fff, .1);
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: 0px 0px 1px #000;
+          }
+        }
+      }
+      tbody {
+        td {
+          &:nth-child(2) {
+            background: rgba($subC, .1);
+            font-weight: bold;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include screen-sm {
+    .btn-corona {
+      margin: 1.2rem auto 0;
+      .pic {
+        padding: .8rem;
+        min-width: 100px;
+        max-width: 100px;
+      }
+      .text {
+        padding: .8rem;
+        &:after {
+          font-size: 1.2rem;
+        }
+        p {
+          font-size: 1.1rem;
+          .sub {
+            margin-top: .4rem;
+          } 
+        }
+      }
+    }
+    .pcr-compare {
+      .pcr-table {
+        display: block;
+        overflow-x: scroll;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        th, td {
+          padding: .8rem .4rem;
+        }
+      }
+    }
+  }
+}
+
+#pcr {
+  padding-bottom: 0;
+}
+.btn-corona {
+  @include flexCenter;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #f0f5f9;
+  border: 3px solid $mainC;
+  .pic {
+    padding: 1.2rem;
+    min-width: 320px;
+    max-width: 320px;
+  }
+  .text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    color: $mainC;
+    &:after {
+      margin-left: 1.2rem;
+      font-size: 1.6rem;
+      color: $mainC;
+      @include faIcon(f35d);
+    }
+    p {
+      margin: 0;
+      font-size: 1.6rem;
+      .sub {
+        display: inline-block;
+        padding: 0 .4rem;
+        border: 1px solid $mainC;
+        font-size: 1.4rem;
+      } 
+    }
+  }
+  &:hover {
+    background: #efefef;
+    border-color: $subC;
+  }
+  @include screen-sm {
+    margin: 1.2rem auto 0;
+    .pic {
+      padding: .8rem;
+      min-width: 100px;
+      max-width: 100px;
+    }
+    .text {
+      padding: .8rem;
+      &:after {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 1.1rem;
+        .sub {
+          margin-top: .4rem;
+        } 
+      }
+    }
+  }
+}
+
+#info {
+  .box {
+    padding: 1.6rem 3.2rem;
+    background: #fff9e8;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+#media {
+  h2 {
+    margin-bottom: 16px;
+  }
+  .media-list {
+    li {
+      position: relative;
+      display: flex;
+      margin-top: 12px;
+      padding: 0 8px;
+      font-size: .85rem;
+      .date {
+        margin-right: 4px;
+      }
+      .tv {
+        .station {
+          margin-right: .4rem;
+          padding: 0 .4rem;
+          border: 1px solid $mainC;
+          font-weight: normal;
+          color: $mainC;
+        }
+      }
+    }
+  }
+  @include screen-md {
+    .media-list {
+      li {
+        flex-direction: column;
+        font-size: .8rem;
+        .date {
+          margin-bottom: 4px;
+        }
+        .tv {
+          .station {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  @include screen-sm {
+    .media-list {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        flex-basis: 50%;
+      }
+    }
+  }
+}
+
+#points {
+  .point-box {
+    position: relative;
+    margin-bottom: 2.4rem;
+    h3 {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: $mainC;
+      font-size: 1.4rem;
+      color: #fff;
+      text-align: center;
+      &:before {
+        margin-right: .6rem;
+        @include faIcon(f00c);
+        color: $subC;
+      }
+    }
+    .number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 64px;
+      height: 64px;
+      margin: 0;
+      background: $mainC;
+      font-style: italic;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: #fff;
+      line-height: 64px;
+      text-align: center;
+    }
+    p {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+#features {
+  .features-content {
+    margin: 0 auto 2.4rem;
+    padding: 1.6rem 3.2rem;
+    background: #fff9e8;
+    border-radius: 24px;
+  }
+  .features-box {
+    margin-bottom: 2.4rem;
+    h3 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.6rem;
+      color: $mainC;
+      i {
+        margin-right: 0.8rem;
+        font-size: 2.4rem;
+        color: $subC;
+      }
+    }
+  }
+}
+
+#inspection {
+  @include bgStripe;
+  .inspection-box {
+    @include flexCenter;
+    padding: 1.6rem;
+    margin-bottom: 1.2rem;
+    min-height: 120px;
+    border: 4px double #fff;
+    background: $mainC;
+    p {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center; 
+    }
+  }
+  @include screen-sm {
+    .inspection-box {
+      padding: 1.2rem;
+      min-height: 100px;
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+#area {
+  .area-box {
+    text-align: center;
+    p {
+      padding: .4rem .8rem;
+      border-radius: 24px;
+      background: $mainC;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+  }
+}
+
+#voices {
+  .letter-box {
+    margin-bottom: 2.4rem;
+    padding: 1.6rem;
+    background: url(../img/letter_bg.png);
+    border: 1px solid $gray;
+    border-radius: 16px;
+    .name {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .signature {
+      text-align: right;
+    }
+    img {
+      border: 8px solid #fff;
+      box-shadow: 1px 1px 5px #ccc;
+    }
+  }
+  .voice-box {
+    display: flex;
+    margin-bottom: 1.6rem;
+    padding: 1.2rem;
+    background: #f3f7fb;
+    border-radius: 16px;
+    .voice-icon {
+      margin: 0 1.2rem 1.2rem 0;
+      min-width: 80px;
+      height: 80px;
+      background: #fff;
+      border-radius: 50%;
+      font-size: 2rem;
+      line-height: 80px;
+      color: $mainC;
+      text-align: center;
+    }
+    .voice-content {
+      .voice-info {
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px dotted $gray;
+        font-weight: 700;
+      }
+      p {
+        margin: 0;
+        font-size: .85rem;
+      }
+    }
+    @include screen-md {
+      .voice-icon {
+        min-width: 72px;
+        height: 72px;
+        font-size: 1.6rem;
+        line-height: 72px;
+      } 
+    }
+  }
+}
+
+#flow {
+  @include bgStripe;
+  .flow-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      position: relative;
+      margin: 0 1.2rem 1.6rem;
+      padding: 1.6rem;
+      width: 300px;
+      border: 4px solid #efefef;
+      border-radius: 16px;
+      background: #fff;
+      text-align: center;
+      .number {
+        @include underLine;
+        font-weight: 700;
+        font-size: 1.6rem;
+      }
+      h3 {
+        margin-bottom: 2.4rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        span {
+          display: block;
+          padding: .4rem;
+          margin-bottom: .8rem;
+          width: 100%;
+          background: $mainC;
+          border-radius: 24px;
+          font-weight: 500;
+          font-size: 1rem;
+          color: #fff;
+        }
+      }
+      i {
+        margin-bottom: 1rem;
+        font-size: 3.2rem;
+        color: $mainC;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      &:not(:last-child):after {
+        position: absolute;
+        right: -2.4rem;
+        top: 50%;
+        margin-top: -1rem;
+        z-index: 9;
+        @include faIcon(f138);
+        font-size: 2rem;
+        color: $subC;
+      }
+    }
+  }
+  @include screen-sm {
+    .flow-list {
+      li {
+        width: 100%;
+        &:not(:last-child):after {
+          transform: rotate(90deg);
+          top: unset;
+          right: unset;
+          left: 50%;
+          bottom: -40px;
+          margin-left: -1rem;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+#faq {
+  .faq-box {
+    margin: 0 auto 2.4rem;
+    max-width: 960px;
+    .faq-q {
+      h3 {
+        margin-bottom: 0.8rem;
+        font-size: 1.4rem;
+        color: $mainC;
+        &:before {
+          margin-right: .8rem;
+          @include faIcon("f059");
+        }
+      }
+    }
+    .faq-a {
+      margin: 0;
+    }
+  }  
+}
+
+#contact {
+  padding-top: 0;
+  @include bgDot;
+  h3 {
+    margin-bottom: 1.2rem;
+    text-align: center;
+    span {
+      display: inline-block;
+      padding: .4rem 1.6rem;
+      border-radius: 16px;
+      background: $mainC;
+      font-weight: 700;
+      color: #fff;  
+    }
+  }
+  @include screen-md {
+    h2 {
+      padding: .8rem;
+      font-size: 1.2rem;
+      span {
+        display: block;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+.error-msg {
+  border: 2px solid #e05e5e;
+  padding: 1.2rem;
+  margin: 0 auto 1.2rem;
+  max-width: 800px;
+  text-align: center;
+  li {
+    padding: .4rem;
+    &:not(:last-child) {
+      border-bottom: 1px dotted $gray;
+    }
+  }
+}
+.btn-area {
+  .row {
+    justify-content: center;
+  }
+}
+
+.cta {
+  @include bgDot;
+  text-align: center;
+  .row {
+    justify-content: center;
+  }
+  h2 {
+    margin-bottom: 1.2rem !important;
+  }
+  .container {
+    .lead {
+      font-weight: 500;
+      font-size: 1.4rem;
+      text-align: center;
+      span {
+        display: inline-block;
+        border-bottom: 2px dotted $mainC;
+        color: $mainC;
+      }
+    }  
+  }
+  h3 {
+    margin-bottom: 1.2rem;
+    padding: .2rem;
+    border-radius: 24px;
+    border: 2px solid $mainC;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: $mainC;
+  }
+  .tel-number {
+    font-weight: 700;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    color: $mainC;
+  }
+  .tel-reception {
+    margin-top: .8rem;
+  }
+  .reception {
+    margin-top: 2.4rem;
+  }
+  .reception-dl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto .4rem;
+    max-width: 320px;
+    text-align: left;
+    dt {
+      margin: 0;
+      width: 160px;
+      h4 {
+        margin: 0;
+        padding: .4rem;
+        border-radius :24px;
+        background: $subC;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #fff;
+        text-align: center;
+      }
+    }
+    dd {
+      width: 160px;
+      margin: 0;
+      padding-left: .4rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    &.pcr {
+      dt {
+        h4 {
+          background: $mainC;
+        }
+      }
+    }
+  }
+  .link-mail {
+    @include btn;
+    @include btn-skelton(#f38e8f, #f38e8f, #f38e8f, #fff);
+  }
+  .link-line {
+    @include btn;
+    @include btn-skelton(#1dcd00, #1dcd00, #1dcd00, #fff);
+  }
+  .btns {
+    @include flexCenter;
+    flex-wrap: wrap;
+    margin: 2.4rem auto 0;
+    background: #fff;
+    border-radius: 16px;
+    li {
+      padding: 0 .8rem;
+    }
+  }
+  @include screen-md {
+    .btns {
+      padding: .8rem 0;
+      .link-mail, .link-line {
+        margin: .4rem;
+      }
+    }
+    .reception-dl {
+      text-align: center;
+    }
+  }
+  @include screen-sm {
+    .tel-number {
+      font-size: 2rem;
+    }
+    .reception {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+#link-online {
+  padding: 1.2rem;
+  background: $mainC;
+  .btn-online {
+    @include flexCenter;
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    .pic {
+      padding: 1.2rem;
+      min-width: 200px;
+      max-width: 200px;
+    }
+    .text {
+      padding: 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: $mainC;
+      &:after {
+        margin-left: 1.2rem;
+        font-size: 1.6rem;
+        color: $mainC;
+        @include faIcon(f054);
+      }
+    }
+    &:hover {
+      background: #f0f5f9;
+    }
+  }
+  @include screen-sm {
+    .btn-online {
+      @include flexCenter;
+      flex-direction: column;
+      padding: 1.2rem;
+      .pic {
+        padding: 0;
+        min-width: 200px;
+        max-width: 200px;
+      }
+      .text {
+        padding: 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+#company {
+  .company-dl {
+    display: flex;
+    flex-wrap: wrap;
+    dt {
+      width: 25%;
+      margin-bottom: 0;
+      padding: 1rem;
+      border-bottom: 1px solid $gray;
+      font-weight: normal;
+      text-align: center;
+    }
+    dd {
+      width: 75%;
+      margin-bottom: 0;
+      padding: 1rem;
+      border-bottom: 1px solid $gray;
+    }
+  }
+}
+
+.side-bnr {
+  position: fixed;
+  bottom: 0;
+  left: 1.2rem;
+  z-index: 99;
+  text-align: center;
+  a {
+    display: block;
+    padding: .8rem 2.4rem;
+    background: $mainC;
+    font-size: 1.2rem;
+    color: #fff;
+    &:hover {
+      background: $subC;
+    }
+    @include faIconAfter(f054);
+  }
+}

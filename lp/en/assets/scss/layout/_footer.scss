@@ -1,0 +1,36 @@
+#footer {
+  padding: 1.2rem 0;
+  background: #efefef;
+  text-align: center;
+  .footer-menu {
+    display: flex;
+    justify-content: center;
+    li {
+      padding: 0 .8rem;
+      a {
+        font-size: .8rem;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid $gray;
+      }
+    }
+  }
+  .copyright {
+    margin: 0;
+    padding-top: 1.2rem;
+    font-size: .8rem;
+  }
+  @include screen-md {
+    .footer-menu {
+      flex-direction: column;
+      li {
+        &:not(:last-child) {
+          border-right: none;
+        }
+      }
+    }
+    .copyright {
+      padding-bottom: 50px;
+    }
+  }
+}

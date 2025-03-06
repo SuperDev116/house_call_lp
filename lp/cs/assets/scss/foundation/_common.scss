@@ -1,0 +1,48 @@
+html {
+  font-size: 16px;
+  @include screen-sm {
+    font-size: 14px;
+  }
+}
+body {
+  font-family: 'Noto Sans Japanese', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  color: #333;
+}
+h1, h2, h3, h4 {
+  font-family: 'Noto Sans Japanese', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+  line-height: 1.4;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4 {
+  font-size: 1rem;
+}
+a {
+  color:#333;
+  transition: .2s;
+  &:hover, &focus {
+    color: $mainC;
+    text-decoration: none;
+    img {
+      opacity: .9;
+    }
+  }
+}
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}

@@ -1,0 +1,846 @@
+<?php
+// ファイル読み込み
+require_once( __DIR__ . '/contact/init.php');
+require_once( __DIR__ . '/contact/validate.php');
+
+global $param;
+
+//操作アクションを取得
+$act = isset($_POST["act"]) ? intval($_POST["act"]) : 1;
+
+if ($act == 1) {
+  // セッションデータクリア
+  $contact_data = array();
+  // 初期値セット
+  $err_msg = array();
+  $name = '';
+  $gender = '';
+  $birthgengou = '';
+  $birthyear = '';
+  $birthmonth = '';
+  $birthday = '';
+  $address = '';
+  $tel = '';
+  $email = '';
+  $card = '';
+  $cardtype = '';
+  $message = '';
+
+} elseif ($act == 2) { // 確認ボタンを押下された場合
+  // POSTデータをセッションに格納
+  $_SESSION["contact_data"] = isset($_POST["contact_data"]) ? $_POST["contact_data"] : array();
+  // セッションデータを配列にセット
+  $contact_data = $_SESSION["contact_data"];
+  // 各項目データをセット
+  $name = isset($contact_data["name"]) ? $contact_data["name"] : "";
+  $gender = isset($contact_data["gender"]) ? $contact_data["gender"] : "";
+  $birthgengou = isset($contact_data["birthgengou"]) ? $contact_data["birthgengou"] : "";
+  $birthyear = isset($contact_data["birthyear"]) ? $contact_data["birthyear"] : "";
+  $birthmonth = isset($contact_data["birthmonth"]) ? $contact_data["birthmonth"] : "";
+  $birthday = isset($contact_data["birthday"]) ? $contact_data["birthday"] : "";
+  $address = isset($contact_data["address"]) ? $contact_data["address"] : "";
+  $tel = isset($contact_data["tel"]) ? $contact_data["tel"] : "";
+  $email = isset($contact_data["email"]) ? $contact_data["email"] : "";
+  $card = isset($contact_data["card"]) ? $contact_data["card"] : "";
+  $cardtype = isset($contact_data["cardtype"]) ? $contact_data["cardtype"] : "";
+  $message = isset($contact_data["message"]) ? $contact_data["message"] : "";
+
+  // 入力チェック
+  $err_msg = checkInputData($contact_data);
+  if(!$err_msg){
+    header("Location: confirm.php");
+    exit();
+  }
+
+} else {
+  // セッションデータ取得
+  $contact_data = isset($_SESSION["contact_data"]) ? $_SESSION["contact_data"] : array();
+  // 各項目データをセット
+  $name = isset($contact_data["name"]) ? $contact_data["name"] : "";
+  $gender = isset($contact_data["gender"]) ? $contact_data["gender"] : "";
+  $birthgengou = isset($contact_data["birthgengou"]) ? $contact_data["birthgengou"] : "";
+  $birthyear = isset($contact_data["birthyear"]) ? $contact_data["birthyear"] : "";
+  $birthmonth = isset($contact_data["birthmonth"]) ? $contact_data["birthmonth"] : "";
+  $birthday = isset($contact_data["birthday"]) ? $contact_data["birthday"] : "";
+  $address = isset($contact_data["address"]) ? $contact_data["address"] : "";
+  $tel = isset($contact_data["tel"]) ? $contact_data["tel"] : "";
+  $email = isset($contact_data["email"]) ? $contact_data["email"] : "";
+  $card = isset($contact_data["card"]) ? $contact_data["card"] : "";
+  $cardtype = isset($contact_data["cardtype"]) ? $contact_data["cardtype"] : "";
+  $message = isset($contact_data["message"]) ? $contact_data["message"] : "";
+
+}
+
+//$page_id = 'index';
+//$page_title = '夜間緊急往診 ナイトドクター';
+//$page_description = '夜間と休日に自宅へ医師が訪問する救急往診サービスです';
+//require("header.php");
+?>
+
+
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="ナイトドクター">
+<meta name="description" content="夜間と休日に自宅へ医師が訪問する救急往診サービスです">
+
+<title>夜間緊急往診 ナイトドクター</title>
+
+<link rel="icon" href="assets/img/favicon.ico">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/smp_style.css" rel="stylesheet">
+
+<link rel="alternate" href="https://piq.jp/lp/" hreflang="ja">
+<link rel="alternate" href="https://piq.jp/lp/en" hreflang="en">
+<link rel="alternate" href="https://piq.jp/lp/cs" hreflang="zh-Hans">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MCLNRTF');</script>
+<!-- End Google Tag Manager -->
+</head>
+
+<body ontouchstart="" class="page-index" id="top">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCLNRTF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header id="header">
+<div class="innerWrap flex_wrap between">
+
+<h1 class="top_logo"><a href="#"><figure><img src="images/h_logo.svg" alt="ナイトドクター"></figure></a></h1>
+
+<nav>
+<ul class="flex_wrap">
+<li><a href="https://piq.jp/lp" class="current">日本語</a></li>
+<li><a href="https://piq.jp/lp/en">English</a></li>
+<li><a href="https://piq.jp/lp/cs">中文</a></li>
+</ul>
+</nav>
+
+<div class="humb"><span></span><span></span><span></span></div>
+
+<!-- モーダルエリアここから -->
+<div id="modalmenu">
+
+<ul>
+<li><a href="#movie">ナイトドクターについて</a></li>
+<li><a href="#media">メディア出演実績</a></li>
+<li><a href="#comparison">鼻咽頭拭いと唾液の違い</a></li>
+<li><a href="#virus">新型コロナウイルス対策</a></li>
+<li><a href="#point">夜間休日緊急往診4つのポイント</a></li>
+<li><a href="#feature">ナイトドクターの特長</a></li>
+<li><a href="#area">対応エリア</a></li>
+<li><a href="#contact">往診のご依頼・お問い合わせ</a>
+<li><a href="#cform">ご依頼・ご相談フォーム</a>
+</ul>
+
+</div>
+<!-- モーダルエリアここまで -->
+
+</div>
+</header>
+
+
+
+
+
+
+<section id="fst_view">
+<div class="innerWrap" data-animate="fadeIn">
+<figure class="main_ccp"><picture><source srcset="images/main_catch_pc.png" media="(min-width: 801px)">
+<img src="images/main_catch_smp.png" alt="夜間と休日に医師が自宅へ訪問する救急往診サービスです
+2020年度 夜間休日往診実績34000件以上">
+</picture></figure>
+</div>
+<div class="exp_txt"><span>2020年度 夜間休日往診実績34000件以上</span></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<main id="main">
+
+
+
+
+
+<section id="bnr">
+<div class="innerWrap">
+
+<figure><a href="https://piq.jp/pcr" class="btn-corona" target="_blank">
+<picture><source srcset="images/BNR_03.png" media="(min-width: 801px)">
+<img src="images/BNR_03_smp.png" alt="新型コロナウイルスPCR検査サービス">
+</picture></a></figure>
+
+<ul class="flex_wrap">
+<li><figure><a href="covid.html" class="btn-corona" target="_blank"><img src="images/BNR_01.png" alt="コロナ抗体検査"></a></figure></li>
+<li><figure><a href="medical.html" class="btn-corona" target="_blank"><img src="images/BNR_02.png" alt="時間外診療サポート　往診委託受付・ご相談"></a></figure></li>
+</ul>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="bg_main" id="movie">
+<div class="innerWrap">
+
+<div class="iframe-wrapper">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T-z4nHQWlzo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<figure class="v_logo"><img src="images/v_logo.svg" alt="ナイトドクター"></figure>
+
+<p>夜間の急病で動けない、通院ができない、至急検査や処置が必要な方、ご自宅にお薬がない方など、<br class="mobile_hidden">お子様から高齢者まで幅広い方を対象に往診致します。<br class="mobile_hidden">地域の医療機関、医療従事者と連携し365日体制で患者様からの救急相談を受け付けしております。</p>
+
+</div>
+</section>
+
+
+
+
+
+
+
+<div class="img_photo">
+<figure><img src="images/tool.jpg" alt=""></figure>
+</div>
+
+
+
+<section class="section" id="news">
+<div class="innerWrap" data-animate="fadeInUp">
+<h2 class="line_ttl">お知らせ / ニュース</h2>
+<ul class="news_list">
+<li><time>2021年12月23日</time>
+<a href="https://citrus-net.jp/article/96850?fbclid=IwAR3WGESR-1EP3hzzDplhbJzmWleZyt4bF_5QrHCz17yWvemWA0qta8kItRA" target="_new">「SNS配信型ウェブメディア」citrusさんに掲載されました。<br>
+<small>&gt;「ウーバーイーツのお医者さんバージョン？ これからは物だけではなく人も動く時代に!?」</small></a>
+</ul>
+</div>
+</section>
+
+
+
+
+<section class="section" id="media">
+<div class="innerWrap" data-animate="fadeInUp">
+<h2 class="line_ttl">メディア出演実績</h2>
+
+<div class="flex_wrap between" id="tv">
+<dl>
+<dt>2020年7月</dt>
+<ul class="media_list">
+<li><span class="date">07/30</span>
+<span class="station">テレビ東京</span>
+<span class="program">WBS</span></li>
+<li>
+<span class="date">07/30</span>
+<span class="station">フジテレビ</span>
+<span class="program">とくダネ！</span></li>
+<li>
+<span class="date">07/31</span>
+<span class="station">TBS</span>
+<span class="program">あさチャン!</span></li>
+<li>
+<span class="date">07/31</span>
+<span class="station">TBS</span>
+<span class="program">グッとラック</span></li>
+<li>
+<span class="date">07/31</span>
+<span class="station">TBS</span>
+<span class="program">ひるおび！</span></li>
+</ul>
+</dl>
+
+<dl>
+<dt>2020年8月</dt>
+<ul class="media_list">
+<li>
+<span class="date">08/03</span>
+<span class="station">テレビ朝日</span>
+<span class="program">スーパーＪチャンネル</span></li>
+<li>
+<span class="date">08/07</span>
+<span class="station">TBS</span>
+<span class="program">あさチャン!</span></li>
+<li>
+<span class="date">08/09</span>
+<span class="tv">
+<span class="station">フジテレビ</span>
+<span class="program">日曜報道プライム</span>
+</span>
+</li>
+<li>
+<span class="date">08/15</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">サンデーLIVE!!</span>
+</span>
+</li>
+<li>
+<span class="date">08/17</span>
+<span class="tv">
+<span class="station">NHK</span>
+<span class="program">ニュースウオッチ９</span>
+</span>
+</li>
+<li>
+<span class="date">08/20</span>
+<span class="tv">
+<span class="station">日本テレビ</span>
+<span class="program">ZIP!</span>
+</span>
+</li>
+<li>
+<span class="date">08/20</span>
+<span class="tv">
+<span class="station">日本テレビ</span>
+<span class="program">情報ライブミヤネ屋</span>
+</span>
+</li>
+<li>
+<span class="date">08/21</span>
+<span class="tv">
+<span class="station">フジテレビ</span>
+<span class="program">グッディ</span>
+</span>
+</li>
+<li>
+<span class="date">08/21</span>
+<span class="tv">
+<span class="station">TBS</span>
+<span class="program">Nスタ</span>
+</span>
+</li>
+<li>
+<span class="date">08/27</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">グッド!モーニング</span>
+</span>
+</li>
+</ul>
+</dl>
+
+<dl>
+<dt>2021年〜</dt>
+<ul class="media_list">
+<li>
+<span class="date">08/19</span>
+<span class="tv">
+<span class="station">TBS</span>
+<span class="program">Nスタ</span>
+</span>
+</li>
+<li>
+<span class="date">09/05</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">サンデーステーション</span>
+</span>
+</li>
+<li>
+<span class="date">09/06</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">グッド!モーニング</span>
+</span>
+</li>
+<li>
+<span class="date">09/06</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">ワイド!スクランブル</span>
+</span>
+</li>
+<li>
+<span class="date">09/07</span>
+<span class="tv">
+<span class="station">日本テレビ</span>
+<span class="program">情報ライブミヤネ屋</span>
+</span>
+</li>
+<li><span class="date">09/08</span>
+<span class="tv">
+<span class="station">フジテレビ</span>
+<span class="program">バイキングMORE</span>
+</span></li>
+
+<li><span class="date">09/09</span>
+<span class="tv">
+<span class="station">日本テレビ</span>
+<span class="program">ZIP!</span>
+</span></li>
+
+<li><span class="date">09/10</span>
+<span class="tv">
+<span class="station">フジテレビ</span>
+<span class="program">Live News it!</span>
+</span></li>
+
+<li><span class="date">09/12</span>
+<span class="tv">
+<span class="station">TBS</span>
+<span class="program">サンデーモーニング</span>
+</span></li>
+
+<li><span class="date">09/16</span>
+<span class="tv">
+<span class="station">テレビ朝日</span>
+<span class="program">スーパーJチャンネル</span>
+</span></li>
+
+<li><span class="date">09/16</span>
+<span class="tv">
+<span class="station">NHK</span>
+<span class="program">ニュースウォッチ9</span>
+</span></li>
+</ul>
+</dl>
+</div>
+
+<figure class="media_logo_wrap"><img src="images/media_logo.jpg" alt="TV番組ロゴ"></figure>
+
+</div>
+</section>
+
+
+
+<section class="alignment">
+<div class="innerWrap" data-animate="fadeInUp">
+
+<h2 class="sec_top rou_ttl ilb">自治体との連携</h2>
+<h3>ナイトドクターは各自治体と連携しています。</h3>
+
+<ul class="flex_wrap">
+<li><figure class="simbol_thumb"><img src="images/tokyo.png" alt="東京都"></figure>
+<div>東京都</div></li>
+
+<li><figure class="simbol_thumb"><img src="images/saitama.png" alt="埼玉県"></figure>
+<div>埼玉県</div></li>
+</ul>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="bg_light" id="comparison">
+<div class="innerWrap" data-animate="fadeInUp">
+<h2 class="sec_top rou_ttl ilb">鼻咽頭拭いと唾液の違い</h2>
+
+<p>私たちは鼻咽頭のPCR検査を推奨しています。<br class="mobile_hidden">ナイトドクターの出張PCR検査は最も感度が良く安全な「鼻からの咽頭拭い」の検査になります。 </p>
+
+<figure><img src="images/hikaku_table.png" alt="比較表"></figure>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section id="virus">
+<div class="innerWrap" data-animate="fadeInUp">
+
+<div class="lined_wrap">
+<h2 class="sec_top rou_ttl">新型コロナウイルス肺炎の抗体検査</h2>
+<div class="flex_wrap between pcr">
+<figure class="f_left"><img src="images/corona.jpg" alt=""></figure>
+<p>ナイトドクターの抗体検査では、新型コロナウイルス肺炎を引き起こすウイルスを、短時間（10分程度）で判別するスクリーニング検査を診察現場でも取り入れました。
+COVID-19被験者の血中または血清に生じる特異的なウイルス抗体、IgG 及びIgM型を検出することで感染の有無が分かります。<br>
+検査をご希望の方は、診察お申込時に「コロナ検査を希望」とお伝えください。</p>
+</div>
+</div>
+
+<div class="lined_wrap red">
+<h2 class="sec_top rou_ttl">新型肺炎コロナウイルス対策</h2>
+
+<p>コロナの疑いのある場合、医師が診察をする際に防護服やゴーグルを着用させていただく場合がございますのでご了承ください。
+感染拡大を防ぐためですのでご理解とご協力のほどお願い申し上げます。 </p>
+</div>
+
+</div>
+</section>
+
+
+
+
+
+
+
+<section id="point" class="bg_gray">
+<div class="innerWrap" data-animate="fadeInUp">
+
+<div class="crnr_ttl">
+<figure><img src="images/points_ttl.png" alt="夜間休日緊急往診4つのポイント"></figure>
+</div>
+
+<ul class="flex_wrap flx_wrap between">
+<li><figure><img src="images/points_01.jpg" alt="夜間・休日の往診のご依頼"></figure>
+<div class="num_c">01</div>
+<h3><span class="chk">夜間・休日の往診のご依頼</span></h3>
+<p>お電話から夜間・休日の往診依頼が出来ます。
+オペレーターより往診時間・担当医師など詳細をお伝え致します。
+ご相談もお気軽にご連絡ください。</p></li>
+
+<li><figure><img src="images/points_02.jpg" alt="医師がご自宅へ訪問します"></figure>
+<div class="num_c">02</div>
+<h3><span class="chk">医師がご自宅へ訪問します</span></h3>
+<p>医師が車でご自宅までお伺い致します。（最短30分）<br>
+待合室で長時間待つ必要はございません。<br>
+ご自宅でゆっくりお待ちください。</p></li>
+
+<li><figure><img src="images/points_03.jpg" alt="ご自宅で診察を行います"></figure>
+<div class="num_c">03</div>
+<h3><span class="chk">ご自宅で診察を行います</span></h3>
+<p>症状に応じて診察・検査を致します。<br>
+診察後、医師が丁寧に症状の説明をします。<br>
+お部屋の中での診察に抵抗感がある患者様には玄関口やエントランスでの診察も承っております。オペレーターか医師に申し付けくださいませ。<br>
+重症な場合は往診医師の指示のもと検査・処置が可能な救急病院へスムーズに搬送を行います。</p></li>
+
+<li><figure><img src="images/points_04.jpg" alt="その場で処方薬をお渡しします"></figure>
+<div class="num_c">04</div>
+<h3><span class="chk">その場で処方薬をお渡しします</span></h3>
+<p>診察内容に応じて薬をその場でお渡し致します。<br>
+医師より患者様に処方薬の効能・服用方法の説明を致します。</p></li>
+</ul>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="bg_main" id="feature">
+<div class="innerWrap" data-animate="fadeInUp">
+
+<h2 class="sec_top rou_ttl">ナイトドクターの特長</h2>
+
+<div class="white_box">
+<ul class="flex_wrap flx_wrap between" id="ftr_box">
+<li>
+<figure><img src="images/icon_ftr_01.png" alt=""></figure>
+<h3>女医多数在籍</h3>
+<p>女性患者も安心して受診して頂けます。</p></li>
+
+<li>
+<figure><img src="images/icon_ftr_02.png" alt=""></figure>
+<h3>各種診断書<br class="pc_hidden">即日発行</h3>
+<p>会社や学校へ提出する診断書がすぐお渡しできます。<br>
+※診断書発行には別途費用が発生します。</p></li>
+
+<li>
+<figure><img src="images/icon_ftr_03.png" alt=""></figure>
+<h3>健康保険適用<br class="pc_hidden">で安心</h3>
+<p>もちろん健康保険は適応されますのでご安心ください。</p></li>
+
+<li>
+<figure><img src="images/icon_ftr_04.png" alt=""></figure>
+<h3>ご自宅で待てる</h3>
+<p>病院の待合室で長時間待つ必要がございません。</p></li>
+
+<li>
+<figure><img src="images/icon_ftr_05.png" alt=""></figure>
+<h3>二次感染の防止</h3>
+<p>ご自宅での診療なので二次感染のリスクがありません。</p></li>
+
+<li>
+<figure><img src="images/icon_ftr_06.png" alt=""></figure>
+<h3>ご自宅で処方薬を<br>
+お渡しできます</h3>
+<p>ご自宅で診察と検査をして、その場でお薬が貰えます。</p></li>
+</ul>
+
+
+<h3 class="sq_ttl">対応可能な症状</h3>
+
+<ul class="flex_wrap flx_wrap between" id="symptoms">
+<li><span>発熱悪寒</span></li>
+<li><span>頭痛</span></li>
+<li><span>咳・たん・喉の痛み</span></li>
+<li><span>嘔吐・下痢</span></li>
+<li><span>便秘・胃腸の痛み・<br>
+腹痛</span></li>
+<li><span>切り傷・ケガによる<br>
+出血</span></li>
+<li><span>やけど・<br>
+皮膚の痛み・痒み</span></li>
+<li><span>耳の痛み・鼻づまり</span></li>
+<li><span>目の痛み・はれ・<br>
+かゆみ</span></li>
+<li><span>打撲・ぎっくり腰・<br>
+骨折</span></li>
+<li><span>アレルギー・<br>
+じんましん</span></li>
+<li><span>不眠・不安</span></li>
+</ul>
+
+<p>診察後、症状に合わせて<br class="pc_hidden">薬をお渡しします。<br>
+各種検査も取り揃えております。<br class="pc_hidden">お気軽にご相談ください。</p>
+</div>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+<section id="area">
+<div class="innerWrap" data-animate="fadeInUp">
+<h2 class="sec_top rou_ttl">対応エリア</h2>
+
+<div class="flex_wrap between areamap">
+<div class="map_box">
+<h3>東京23区</h3>
+<figure><img src="images/map_01.png" alt="tokyo"></figure>
+</div>
+
+<div class="map_box">
+<h3>多摩地区</h3>
+<figure><img src="images/map_02.png" alt="tama"></figure>
+</div>
+
+<div class="map_box">
+<h3>訪問エリアは<br>
+一都三県に随時拡大中</h3>
+<figure><img src="images/map_03.png" alt="近隣"></figure>
+</div>
+</div>
+
+<h3 class="line_ttl"><span>往診のご依頼・お問い合わせ</span></h3>
+<table class="teleapo"><tr>
+<td><a class="tel-number" href="tel:0363817511"><strong>東京23区・千葉・埼玉</strong>
+<span class="telNum">03-6381-7511</span></a></td>
+<td class="td_lined"><a class="tel-number" href="tel:0425481717"><strong>多摩地区・神奈川</strong>
+<span class="telNum">042-548-1717</span></a></td>
+</tr></table>
+
+
+<ul class="flex_wrap targeter">
+<li>
+<figure><img src="images/icon_area_01.png" alt="コロナ陽性者の方往診可能"></figure>
+<h3>コロナ<span class="txc_main txt_dai txt_bold">陽性者</span><br>
+の方往診可能</h3>
+</li>
+
+<li>
+<figure><img src="images/icon_area_02.png" alt="24時間出張PCR検査"></figure>
+<h3><span class="txt_dai txt_bold">24時間<span class="txc_main">出張</span></span><br>
+PCR検査</h3>
+</li>
+
+<li>
+<figure><img src="images/icon_area_03.png" alt="365日夜間緊急往診"></figure>
+<h3><span class="txc_main txt_dai txt_bold">365日</span><br>
+夜間緊急往診</h3>
+</li>
+</ul>
+
+<ul class="flex_wrap" id="con_act">
+<li><a href="https://line.me/R/ti/p/%40737qdagd" target="_blank" class="online"><span class="add_arw">LINEでご相談</span></a></li>
+<li><a href="#contact" class="onmail"><span class="add_arw">メールでご相談</span></a></li>
+</ul>
+
+</div>
+</section>
+
+
+
+
+
+
+<!--// 共用パート
+<article class="action flex_wrap">
+<figure class="phone_img"><img src="images/smphone.png" alt=""></figure>
+
+<div class="poke_doc">
+<figure><img src="images/p_doctor.jpg" alt="ポケットドクター"></figure>
+<h3 class="line_ttl"><span>オンライン診療受付中</span></h3>
+
+<p>ナイトドクターでは、『オンライン診療ポケットドクター』を活用したオンライン診療を受け付けています。</p>
+
+<a class="rou_ttl ilb" href="pocketdoctor.php" target="_blank"><span class="add_arw">オンライン診察はこちら</span></a>
+</div>
+
+</article>
+#共用パート //-->
+
+
+
+
+
+<section  id="contact">
+<div class="innerWrap" data-animate="fadeInUp">
+
+<strong>クレジットカード対応</strong>
+<p>下記のクレジットカード会社での<br class="pc_hidden">支払いが可能です。</p>
+<figure><img src="images/card_logo.png" alt="VISA/MASTER"></figure>
+<p><small>※クレジットカード決済をご希望のお客様は<br class="pc_hidden">担当者へお申し付けください。</small><p>
+
+<h2 class="sec_ttl"><span>ご依頼・ご相談フォーム</span></h2>
+
+<small>下記患者さま情報を全てご記入いただき、<br class="pc_hidden">送信内容確認ボタンをクリックしてください。</small>
+
+<?php if (isset($err_msg) && count($err_msg) > 0) { ?>
+<script type="text/javascript">
+  $(function() {
+	var n = window.location.href.slice(window.location.href.indexOf('?') + 4);
+	var p = $("#contact").offset().top;
+	$('html,body').animate({ scrollTop: p }, 'slow');
+	return false;
+  });
+</script>
+<div class="error-msg">
+  <ul class="error">
+	<?php foreach ($err_msg as $msg) { ?>
+	<li><?php echo $msg; ?></li>
+	<?php } ?>
+  </ul>
+</div>
+<?php } ?>
+
+
+<div class="cform_wrap" id="cform">
+<form name="contactform" role="form" method="post" action="">
+
+<table class="form_table">
+<tr><td class="input_ttl">患者様のお名前<span class="required">必須</span></td>
+<td class="input_source"><input type="text" name="contact_data[name]" placeholder="山田 一郎" value="<?php echo h($name); ?>"></td></tr>
+
+<tr><td class="input_ttl">患者様の性別<span class="required">必須</span></td>
+<td class="input_source"><input type="radio" name="contact_data[gender]" value="男性" id="radio-men" <?php if($gender == '男性') echo 'checked'; ?>><label for="radio-men"> 男性</label>　　<input type="radio" name="contact_data[gender]" value="女性" id="radio-women" <?php if($gender == '女性') echo 'checked'; ?>><label for="radio-women"> 女性</label></td></tr>
+
+<tr><td class="input_ttl">患者様の生年月日<span class="required">必須</span></td>
+<td class="input_source"><select name="contact_data[birthgengou]" class="wtsl">
+<option value="--">選択してください</option>
+<option value="大正" <?php if($birthgengou == '大正') echo 'selected'; ?>>大正</option>
+<option value="昭和" <?php if($birthgengou == '昭和') echo 'selected'; ?>>昭和</option>
+<option value="平成" <?php if($birthgengou == '平成') echo 'selected'; ?>>平成</option>
+<option value="令和" <?php if($birthgengou == '令和') echo 'selected'; ?>>令和</option>
+</select>
+<input type="text" name="contact_data[birthyear]" placeholder="" value="<?php echo h($birthyear); ?>" class="wts">年
+<input type="text" name="contact_data[birthmonth]" placeholder="" value="<?php echo h($birthmonth); ?>" class="wts">月
+<input type="text" name="contact_data[birthday]" placeholder="" value="<?php echo h($birthday); ?>" class="wts">日
+
+<tr><td class="input_ttl">患者様のご住所<span class="required">必須</span></td>
+<td class="input_source"><input type="text" name="contact_data[address]" placeholder="東京都" value="<?php echo h($address); ?>"></td></tr>
+
+<tr><td class="input_ttl">お電話番号<span class="required">必須</span></td>
+<td class="input_source"><input type="text" name="contact_data[tel]" placeholder="080-1234-5678" value="<?php echo h($tel); ?>"></td></tr>
+
+<tr><td class="input_ttl">メールアドレス<span class="required">必須</span></td>
+<td class="input_source"><input type="email" name="contact_data[email]" placeholder="example@piq.jp" value="<?php echo h($email); ?>"></td></tr>
+
+<tr><td class="input_ttl">保険証の有無<span class="required">必須</span></td>
+<td class="input_source"><select name="contact_data[card]" class="wtsl">
+<option value="--">選択してください</option>
+<option value="有" <?php if($card == '有') echo 'selected'; ?>>有</option>
+<option value="無" <?php if($card == '無') echo 'selected'; ?>>無</option>
+</select></td></tr>
+
+<tr><td class="input_ttl">具体的な症状、相談内容<span class="required">必須</span></td>
+<td class="input_source"><textarea name="contact_data[message]"><?php echo h($message); ?></textarea></td></tr>
+</table>
+
+<button type="submit" name="btnSubmit" class="btn">送信内容を確認</button>
+<input type="hidden" name="act" value="2">
+
+</form>
+</div>
+
+</div>
+</section>
+
+
+</main>
+
+
+
+<footer id="footer" class="bg_main">
+
+<div class="ft_logo">
+<a href="#top"><figure><img src="images/v_logo.svg" alt="ナイトドクター"></figure></a>
+</div>
+
+<div class="rou_ttl ilb">事業者概要</div>
+
+<table class="corp_info">
+<tr><th>運営者</th><td>ナイトドクター株式会社</td></tr>
+<tr><th>事務所所在地</th><td>〒107-0052 東京都港区赤坂2-16-6 BIZMARKS赤坂</td></tr>
+<tr><th>電話番号</th><td>03-6381-7511 / 042-548-1717</td></tr>
+</table>
+
+
+<div class="ft_links">
+<a href="index.php">HOME</a>　/　<!--//<a href="pocketdoctor.php" target="_blank">オンライン診療</a>　//--><a href="privacy.php">プライバシーポリシー</a>　/　<a href="law.php">特定商取引法に基づく表示</a>
+</div>
+
+<div id="goto_top" class="fadeup">
+<a href="#top"><figure><img src="images/add_arrow.svg" alt=""></figure></a>
+</div>
+
+<small class="cpright">&copy; 2021 NightDoctor / ナイトドクター</small>
+</footer>
+
+
+
+<!--// CTA //-->
+<article id="cta" class="fadeup">
+<ul class="flex_wrap">
+<li><a href="tel:0363817511"><figure><img src="images/icon_cta_01.png" alt=""></figure><span class="smp_txt">電話でのご相談</span></a></li>
+<li><a href="https://line.me/R/ti/p/%40737qdagd" target="_blank"><figure><img src="images/icon_cta_02.png" alt=""></figure><span class="smp_txt">LINEでのご相談</span></a></li>
+<li><a href="#contact"><figure><img src="images/icon_cta_03.png" alt=""></figure><span class="smp_txt">メールでのご相談</span></a></li>
+</ul>
+</article>
+<!--// #CTA //-->
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+.btn {
+  @include btn;
+}
+.btn-back {
+  @include btn;
+  @include btn-skelton($subC, $subC, $subC, #fff);
+}
+.lead {
+  text-align: center;
+}
+.message {
+  margin: 0;
+  padding-top: 1.6rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: center;
+  span {
+    @include underLine;
+  }
+  @include screen-sm {
+    padding-top: 1.2rem;
+    font-size: 1.2rem; 
+  }
+}
+.center-pic {
+  display: block;
+  margin: 0 auto;
+}
+
+.notes {
+  font-size: .85rem;
+}
+.iframe-wrapper{
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100% !important;
+   height: 100% !important;
+   border: none;
+ }
+  @include screen-sm {
+    height: 320px;
+  }
+}
+
+#go-to-top {
+  display: none;
+  position: fixed;
+  bottom: .8rem;
+  right: .8rem;
+  a {
+    display: block;
+    padding: .8rem 1rem;
+    background: $subC;
+    color: #fff;
+    text-align: center;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  @include screen-sm {
+    width: 40px;
+    a {
+      padding: .4rem;
+    }
+  }
+}
+
+.contact-dl {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $gray;
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
+  dt {
+    width: 30%;
+    padding: 1.6rem;
+    background: #e8f2f9;
+    border-top: 1px solid $gray;
+    span {
+      display: inline-block;
+      padding: .2rem .4rem;
+      margin-left: .6rem;
+      font-size: .7rem;
+      font-weight: normal;
+      color: #fff;
+      &.required {
+        background: red;
+      }
+      &.optional {
+        background: blue;
+      }
+    }
+  }
+  dd {
+    width: 70%;
+    margin-bottom: 0;
+    padding: 1.6rem;
+    background: #fff;
+    border-top: 1px solid $gray;
+    overflow: hidden;
+  }
+  .form-notes {
+    font-size: .8rem;
+    margin: .6rem 0;
+  }
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="url"],
+  select,
+  textarea {
+    padding: .6rem;
+    width: 100%;
+    border: 1px solid $gray;
+    background-color: #fff;
+    border-radius: 4px;
+    color: $darkgray;
+  }
+  input[type="submit"] {
+    @include btn;
+    cursor: pointer;
+  }
+  .birth-box {
+    margin: 0;
+    .col {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+    input {
+      width: calc(100% - 25px);
+      margin-right: 0.4rem;
+    }
+  }
+  @include screen-sm {
+    border-bottom: 1px solid $gray;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+    dt {
+      width: 100%;
+      padding: .8rem 1.6rem;
+    }
+    dd {
+      width: 100%;
+      padding: .8rem 1.6rem;
+      border-top: none;
+    }
+  }
+}
+
