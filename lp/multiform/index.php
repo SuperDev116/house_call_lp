@@ -232,8 +232,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     .modal-content {
-        background-color: white;
-        margin: 10% auto;
+        background-color: #eee;
+        margin: 3% auto;
         padding: 20px;
         width: 60%;
         border-radius: 8px;
@@ -248,6 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     .content-wrap {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 20px;
@@ -258,7 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .flag-list li {
         list-style: none;
         padding: 10px;
@@ -273,13 +274,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .flag-list img {
         width: 50px;
         height: 35px;
+        border: 1px solid #ccc;
     }
-    
+
     @media (max-width: 640px) {
 
         /* 言語選択 */
         .modal-content {
             width: 90%;
+            margin: 15% auto;
         }
 
         .flag-list {
@@ -291,14 +294,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .flag-list li {
-            padding: 0px;
+            padding-bottom: 10px;
             cursor: pointer;
-        }
-
-        .flag-list img {
-            width: 50px;
-            height: 35px;
-            border: 1px solid #ccc;
         }
 
         .content-wrap {
@@ -309,6 +306,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .sp_hidden {
             display: none;
         }
+    }
+
+    .main_ccp {
+        position: relative;
+        text-align: center;
     }
 </style>
 
@@ -346,19 +348,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div id="languageModal" class="modal">
             <div class="modal-content">
+                <h1 style="font-size: 35px;" class="sp_hidden">Select Language</h1>
                 <div class="content-wrap">
-                    <figure class="main_ccp" style="padding: 10px;">
+                    <figure class="main_ccp" style="padding: 10px; opacity: 1;" id="mainImage">
                         <picture>
-                            <source srcset="../images/main_catch_pc.png" media="(min-width: 801px)">
-                            <img src="../images/main_catch_smp.png" alt="夜間と休日に医師が自宅へ訪問する救急往診サービスです。2020年度 夜間休日往診実績34000件以上">
+                            <!-- <source srcset="../images/main_catch_pc.png" media="(min-width: 801px)"> -->
+                            <source srcset="../images/main_catch_pc_en.png" media="(min-width: 801px)">
+                            <!-- <img src="../images/main_catch_smp.png" alt="夜間と休日に医師が自宅へ訪問する救急往診サービスです。2020年度 夜間休日往診実績34000件以上"> -->
+                            <img src="../images/main_catch_smp_en.png" alt="夜間と休日に医師が自宅へ訪問する救急往診サービスです。2020年度 夜間休日往診実績34000件以上">
                         </picture>
                     </figure>
+                    <!-- <span class="main_ccp_text" id="mainText">Night Doctor Hotline</span> -->
+                    <h1 style="font-size: 35px;" class="pc_hidden">Select Language</h1>
                     <ul class="flag-list">
                         <li onclick="selectLanguage_('en', 'https://flagcdn.com/w40/us.png', 'English')">
                             <img class="flag" src="https://flagcdn.com/w40/us.png" alt="US"> <span class="sp_hidden">English</span>
                         </li>
                         <li onclick="selectLanguage_('zh', 'https://flagcdn.com/w40/cn.png', '中文')">
                             <img class="flag" src="https://flagcdn.com/w40/cn.png" alt="CN"> <span class="sp_hidden">中文</span>
+                        </li>
+                        <li onclick="selectLanguage_('zh', 'https://flagcdn.com/w40/tw.png', '台湾')">
+                            <img class="flag" src="https://flagcdn.com/w40/tw.png" alt="TW"> <span class="sp_hidden">台湾</span>
                         </li>
                         <li onclick="selectLanguage_('kr', 'https://flagcdn.com/w40/kr.png', '한국어')">
                             <img class="flag" src="https://flagcdn.com/w40/kr.png" alt="KR"> <span class="sp_hidden">한국어</span>
@@ -393,6 +403,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </li>
                     <li onclick="selectLanguage('zh', 'https://flagcdn.com/w40/cn.png', '中文')">
                         <img class="flag" src="https://flagcdn.com/w40/cn.png" alt="CN"> 中文
+                    </li>
+                    <li onclick="selectLanguage('zh', 'https://flagcdn.com/w40/tw.png', '台湾')">
+                        <img class="flag" src="https://flagcdn.com/w40/tw.png" alt="TW"> 台湾
                     </li>
                     <li onclick="selectLanguage('kr', 'https://flagcdn.com/w40/kr.png', '한국어')">
                         <img class="flag" src="https://flagcdn.com/w40/kr.png" alt="KR"> 한국어
@@ -1254,7 +1267,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $("#fst_view ." + lang).css("display", "flex");
             $("#faq ." + lang).show();
 
-            document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("contact").scrollIntoView({
+                behavior: "smooth"
+            });
         }
 
         document.addEventListener("click", function(event) {
@@ -1282,13 +1297,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $("#fst_view ." + lang).css("display", "flex");
             $("#faq ." + lang).show();
 
-            document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("contact").scrollIntoView({
+                behavior: "smooth"
+            });
 
             closeModal();
         }
 
         $(document).ready(function() {
             openModal();
+            
+            document.getElementById("contact").scrollIntoView({
+                behavior: "smooth"
+            });
         });
     </script>
 </body>
